@@ -25,7 +25,7 @@ author:
   #pinterest: asd123
   linkedin: raphael-seher-a729a0104
   bio: Young app developer based in Klagenfurt, Carinthia. Working with iOS, Android and learning more!
-  #email_md5: 726351295ec82e145928582f595aa3aa
+  email_md5: a85a21baffb7111a4a5ffc51cfcc9456
 
 rss_path: feed.xml
 categories_path: categories.html
