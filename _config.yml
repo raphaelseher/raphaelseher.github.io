@@ -1,40 +1,49 @@
-# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+# Site Info
+title:              "Raphael Seher"
+description:        ""
 
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
-exclude: ["README.md"] # files to exclude
-highlighter: rouge
-markdown: kramdown
-disqus: raphaelseher
-google_analytics: UA-80268149-1
-title: Raphael Seher
+# Author Info
+author_name:        "Raphael Seher"
+author_email:       raphael@raphaelseher.at
+twitter_username:   raphaelseher
+github_username:    raphaelseher # GitHub username
+
+# Site Settings
+baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
+permalink:          /notes/:title # Post permalink
+timezone:           Europe/Berlin # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+mathjax:            false  # enables support for mathjax - set to false to disable
+
+# Site Build
+highlighter:        rouge
+#markdown:           redcarpet
+#redcarpet:
+#    extensions:     ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "highlight", "footnotes"]
+markdown:           kramdown
+kramdown:
+    input:          GFM
+sass:
+    style:          :compressed
+
+# Other Params
+include:            [ "robots.txt" ]
+exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
+gems:
+  - jekyll-sitemap
 
 defaults:
   -
     scope:
-      path: "" # empty string for all files
+      path:         ""
     values:
-      title: Mobile | Development | Design | Ideas
-
-description: Stylish Jekyll Theme
-author:
-  name: Raphael
-  email: raphael.seher@gmail.com
-  github: raphaelseher
-  twitter: raphaelseher
-  #pinterest: asd123
-  linkedin: raphael-seher-a729a0104
-  bio: Young app developer based in Klagenfurt, Carinthia. Working with iOS, Android and learning more!
-  email_md5: a85a21baffb7111a4a5ffc51cfcc9456
-
-rss_path: feed.xml
-categories_path: categories.html
-tags_path: tags.html
-
-# set it as url of an image
-# sidebar_background_image: https://farm8.staticflickr.com/7266/26830297935_95a1e8279b_z_d.jpg
-
-BASE_PATH:
-
-gems:
-  - jekyll-paginate
+      layout:       "null"
+  -
+    scope:
+      type:         "pages"
+    values:
+      layout:       "page"
+  -
+    scope:
+      type:         "posts"
+    values:
+      layout:       "post"
