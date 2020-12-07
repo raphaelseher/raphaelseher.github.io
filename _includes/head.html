@@ -1,39 +1,35 @@
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% if page.title %}
-	<title>{{ page.title }}</title>
-{% else %}
+	<!-- Plain Description -->
 	<title>{{ site.title }}</title>
-{% endif %}
+	<meta name="description" content="{% if page.excerpt %}{{page.excerpt}}{% else %}{{site.tagline}}{% endif %}">
+	<link rel="icon" type="image/png" href="/favicon.png">
 
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@{{ site.twitter_username }}" />
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
-<meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 200 }}{% else %}{{ site.description }}{% endif %}">
+	<!-- Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title"
+		content="{% if page.fulltitle %}{{page.fulltitle}}{% else %}{{page.title}} | {{ site.title }} {% endif %}" />
+	<meta property="og:description"
+		content="{% if page.excerpt %}{{page.excerpt}}{% else %}{{site.tagline}}{% endif %}" />
+	<meta property="og:image"
+		content="{% if page.image %}{{site.url}}{{page.image}}{% else %}{{site.url}}{{site.socialimg}}{% endif %}" />
+	<meta property="og:url" content="{{site.url}}{{page.url}}" />
+	<meta property="og:site_name" content="{{ site.title }} " />
 
-<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title"
+		content="{% if page.fulltitle %}{{page.fulltitle}}{% else %}{{page.title}} | {{ site.title }} {% endif %}">
+	<meta name="twitter:description"
+		content="{% if page.excerpt %}{{page.excerpt}}{% else %}{{site.tagline}}{% endif %}">
+	<meta name="twitter:image" content="{{site.url}}{{site.socialimg}}">
+	<meta name="twitter:url" content="{{site.url}}{{page.url}}">
 
-<link rel="icon" href="{{ site.baseurl }}/assets/favicon.png">
-<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/touch-icon.png">
-<link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/core.css">
-<link rel="canonical" href="{{ page.url | prepend: site.baseurl }}">
-<link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.baseurl }}/feed.xml" />
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="css/app.css">
+	<!-- Put your fonts here -->
 
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//raphaelseher.at/piwik/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '1']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Piwik Code -->
+</head>

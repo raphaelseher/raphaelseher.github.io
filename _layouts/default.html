@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-	<head>
-		{% include head.html %}
-	</head>
+{% include head.html %}
 
-	<body>
-
+<body>
+	<div id="main">
 		{% include header.html %}
 
-		<main>
-			{{ content | replace: '&#8617;', '&#8617;&#xfe0e;' }}
-		</main>
+		<div id="content">
+			{{ content }}
+		</div>
 
 		{% include footer.html %}
-
-	</body>
+	</div>
+</body>
 
 </html>

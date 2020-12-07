@@ -1,49 +1,20 @@
-# Site Info
-title:              "Raphael Seher"
-description:        ""
+# Site settings
+title: Raphael Seher
+tagline: ""
+url: "http://raphaelseher.at"
+author_name: "Raphael Seher"
 
-# Author Info
-author_name:        "Raphael Seher"
-author_email:       raphael@raphaelseher.at
-twitter_username:   raphaelseher
-github_username:    raphaelseher # GitHub username
+# Social
+socialimg: /img/profil.jpg 
+twitter: raphaelseher
+github: raphaelseher
+instagram: raphaelseher
 
-# Site Settings
-baseurl:            "" # Base URL must end WITHOUT a slash, default: ""
-permalink:          /notes/:title # Post permalink
-timezone:           Europe/Berlin # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-mathjax:            false  # enables support for mathjax - set to false to disable
+# Contact
+email: "raphael.seher@gmail.com" # This is my real email address. Please don't email me.
 
-# Site Build
-highlighter:        rouge
-#markdown:           redcarpet
-#redcarpet:
-#    extensions:     ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data", "highlight", "footnotes"]
-markdown:           kramdown
-kramdown:
-    input:          GFM
+# Use this for production
 sass:
-    style:          :compressed
+  style: compressed
 
-# Other Params
-include:            [ "robots.txt" ]
-exclude:            [ "LICENSE", "README.md", "CNAME", "vendor", "Gemfile" ]
-gems:
-  - jekyll-sitemap
-
-defaults:
-  -
-    scope:
-      path:         ""
-    values:
-      layout:       "null"
-  -
-    scope:
-      type:         "pages"
-    values:
-      layout:       "page"
-  -
-    scope:
-      type:         "posts"
-    values:
-      layout:       "post"
+exclude: [.scss, README.md, node_modules, gruntfile.js, package.json]
