@@ -4,9 +4,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Plain Description -->
-	<title>{{ site.title }}</title>
+	<title>{{ site.meta_title }}</title>
 	<meta name="description" content="{% if page.excerpt %}{{page.excerpt}}{% else %}{{site.tagline}}{% endif %}">
-	<link rel="icon" type="image/png" href="/favicon.png">
+	<link rel="icon" type="image/jpg" href="/favicon.jpg">
 
 	<!-- Facebook -->
 	<meta property="og:type" content="website" />
@@ -29,7 +29,7 @@
 	<meta name="twitter:url" content="{{site.url}}{{page.url}}">
 
 	<!-- CSS & fonts -->
-	<link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="{{ '/css/app.css' | relative_url }}">
 	<!-- Put your fonts here -->
-
+    <script src='{{ '/js/app.js' | relative_url }}'></script>
 </head>

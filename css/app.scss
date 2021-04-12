@@ -1,21 +1,48 @@
 ---
 ---
 
+@import url(gruvbox.css);
+
 $primary-color: #0277bd;
 $primary-color-light: #58a5f0;
 $primary-color-dark: #004c8c;
 $secondary-color: #ffb300;
 
+$sidebar-background-color: #242424;
+$main-background-color: #efefef;
+$nav-font-color: #fff;
+$color-particles-1: rgba(255, 255, 255, 0.3);
+$color-particles-2: rgba(255, 255, 255, 0.5);
+
+$button-background-color: #242424;
+$button-color: #fff;
+
+$font-color: #353535;
+
 // Breakpoints. Use these in your media queries.
 $babybear: 321px;
-$mamabear: 769px;
+$mamabear: 768px;
 $papabear: 1140px;
 $monsterbear: 1300px;
 
 $font-size: 16px;
+$font-size-small: 13px;
+
 $font-family: "Roboto";
 $font-family-mono: "Mono";
-$font-color: #353535;
+
+$content-max-width: 900px;
+$sidebar-width: 300px;
+$sidebar-width-tablet: 200px;
+$sidebar-height-phone: 100px;
+$particle-spacing-x: 769px;
+$particle-spacing-y: 2000px;
+$planet-size: 96px;
+$planet-offset: 400px;
+
+$nav-background-index: -3;
+$nav-particles-index: -2;
+$nav-planets-index: -1;
 
 @font-face {
     font-family: 'Mono';
@@ -41,46 +68,244 @@ $font-color: #353535;
     font-display: swap;
 }
 
+@function randomLeftPosition($width) {
+    @return random($width - $planet-size)+px;
+}
+html {
+    background-color: $main-background-color;
+}
+
 body {
 	margin: 0;
 
 	#main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: 4em;
+        display: flex;
+        flex-direction: column;
+        font-family: $font-family;
+        background-color: $main-background-color;
 	}
 	
-	hr { 
-		display: block; 
-		height: 1px;
-		border: 0; 
-		border-top: 1px solid $font-color;
-		background-color: $font-color;
-		color: $font-color;
-		margin: 0; 
-		padding: 0; 
-	}
-
 	#content {
 		font-family: $font-family;
 		color: $font-color;
-		padding: 1em;
+		padding: 0.5em 2em 0.5em 2em;
+        max-width: $content-max-width; 
+           
+        img {
+            width: 100%; 
+            max-width: $content-max-width;
+            height: auto;
+        }
+
+        ul {
+            list-style-type: none; 
+            padding: 0;
+        }
+
+        .post {
+            margin-bottom: 3em;
+
+            .title {
+                h3, h2 {
+                    margin-bottom: 0.1em; 
+                }
+                a { 
+                    color: $font-color;
+
+                    &:hover {
+                        text-decoration-color: $primary-color;
+                    }
+                }
+                p { 
+                    margin-top: 0;
+                }
+
+                .meta {
+                    display: flex;
+                    flex-direction: row;
+                    
+                    .tags {
+                        margin-left: 2em;
+                    }
+                }
+            }
+
+            .date, .tags {
+                font-size: 12px;
+            }
+        }
+
+        div.highlight {
+            padding: 0.5em 0.5em 0.5em 0.5em;
+            overflow-x: auto;
+
+            .lineno {
+                margin-right: 1em;    
+                -ms-user-select:none;
+                -moz-user-select:none;
+                -webkit-user-select:none;
+                -webkit-touch-callout: none;
+                -khtml-user-select: none;
+                user-select:none;
+            }
+            pre {
+                margin: 0;
+            }
+        }
+
+        blockquote {
+            margin: 0 1em 0 1em;
+            border-left: 3px solid $primary-color;
+            background-color: #fefefe;
+
+            p {
+                padding: 0.2em 0.5em 0.2em 0.5em;
+            }
+        }
 	}
 
-	#head {
-		font-family: $font-family-mono;
-		display: flex;
-		flex-direction: row;
-		padding: 1em;
-		color: $font-color;
+    a.button {
+        padding: 0.2em 1em 0.2em 1em;
+        background-color: $button-background-color;
+        color: $button-color;
+        text-decoration: none;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+   
+        &:hover {
+            border-bottom: 3px solid $primary-color;
+        }
+    }
 
-		h1 {
-			margin: 0 0 0.2em 0;
-			color: $primary-color-dark
-		}
+    a.button-small {
+        font-size: $font-size-small;
+    }
 
-		img {
+    .footer { 
+		padding: 0.5em 2em 0.5em 2em;
+        font-size: $font-size-small;
+    }
+
+    @media (max-width: $mamabear) { 
+        header {
+            width: 100%;
+            height: $sidebar-height-phone;
+            flex-direction: row; 
+            
+            nav {
+                flex-direction: row;
+            }
+
+            #bio {
+                display: none; 
+            }
+
+            .footer { 
+                display: none;
+            }
+
+            .planet {
+                width: 72px; 
+                height: 100%;
+                margin: auto;
+            }
+        }
+    }
+
+    @media (min-width: $mamabear) {
+        #main { 
+            margin-left: $sidebar-width-tablet;
+        }
+
+        .footer {
+            display: none;
+        }
+
+        header {
+            width: $sidebar-width-tablet;
+            height: 100%;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            nav {
+                flex-direction: column;
+                margin: 1em 0 1em 0;
+            }
+            
+            .planet {
+                position: relative;
+                width: 96px; 
+                height: 96px;
+            
+                animation: planetMoving 1s linear 1;
+            }
+
+            .footer { 
+                display: block;
+            }
+
+            @for $i from 1 through 5 {
+                .planet-#{$i} {
+                    left: randomLeftPosition($sidebar-width-tablet);
+                }
+            }
+        }
+    }
+
+    @media (min-width: $papabear) {
+        #main { 
+            margin-left: $sidebar-width;
+        }
+
+        header { 
+            width: $sidebar-width;
+
+            @for $i from 1 through 5 {
+                .planet-#{$i} {
+                    left: randomLeftPosition($sidebar-width);
+                }
+            }
+        }
+    }
+
+	header {
+        display: flex;
+        overflow: hidden;
+        font-family: $font-family-mono;
+		color: $nav-font-color;
+        margin: auto;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+        box-shadow: inset 0px -4px 7px rgba(0, 0, 0, 0.5);
+
+        .content { 
+            padding: 1em;
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .nav-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: $nav-background-index;
+            background-color: $sidebar-background-color;
+        }
+
+        .title {
+            margin: 0 0 0.2em 0;
+            
+            a { 
+                color: $nav-font-color;
+                text-decoration: none;
+            }
+        }
+		
+        img {
 			object-fit: cover;
 			width: 100px;
 			height: 100px;
@@ -90,25 +315,163 @@ body {
 			justify-content: center;
 		}
 
-		#nav {
-			margin: auto;
-			margin-left: 2em;
+        nav {
+            display: flex;
+        
+            a {
+                color: $nav-font-color;
+                margin: 0 0.4em 0 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+            }
 
-			a {
-				color: $font-color;
-				margin: 0 0.4em 0 0;
-			}
+            a:hover {
+                text-decoration-color: $primary-color;
+            }
+        }
+        
+        #planets { 
+            flex-grow: 1;
+        }
 
-			a:hover {
-				text-decoration-color: $primary-color;
-			}
-		}
-	}
+        .planet {
+            z-index: $nav-planets-index; 
+            background-size: contain; 
+            background-repeat: no-repeat;
+            background-position: center;
+            
+            animation-delay: calc(var(--scroll) * -1s);
+            animation-play-state: paused;
+            animation-fill-mode: forwards;
+        }
 
-	.footer {
-		font-family: $font-family-mono;
-		color: $font-color;
-		font-size: 14px;
+        #raphi {
+            top: random(10)+px;
+            background-image: url(../img/raphi.png);
+        }
+
+        #earth {
+            top: random(100px)+$planet-offset;
+            background-image: url(../img/earth.png);
+        }
+
+        #mars {
+            top: random(100px)+2*$planet-offset;
+        }
+
+        #venus {
+            top: random(100px)+3*$planet-offset;
+        }
+
+        #jupiter {
+            top: random(100px)+4*$planet-offset;
+        }
+
+        @keyframes planetMoving {
+           to {
+               transform: translateY(-600%);
+           }
+        }
+
+        @function particles($max, $color) {
+            $val: 0px 0px $color;
+            @for $i from 1 through $max {
+                $val: #{$val}, random($particle-spacing-x)+px random($particle-spacing-y)+px $color;
+            }
+            @return $val;
+        }
+
+        @mixin particles($max, $color) {
+            box-shadow: particles($max, $color);
+        }
+ 
+        .particle-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: $nav-particles-index;
+        }
+
+        .particle {
+            animation: planetMoving 1s linear 1;
+            animation-delay: calc(var(--scroll) * -1s);
+            animation-play-state: paused;
+            animation-fill-mode: forwards;
+        }
+
+        .particle:after {
+            position: absolute;
+            content: "";
+            top: 0;
+        }
+
+        .particle-1 {
+            @include particles(400, $color-particles-1);    
+            width: 2px;
+            height: 2px;
+        }
+
+        .particle-2 {
+            @include particles(100, $color-particles-1);    
+            width: 2px;
+            height: 2px;
+        }
+
+        .particle-3 {
+            @include particles(500, $color-particles-1);    
+            width: 2px;
+            height: 2px;
+        }
+
+        .particle-4 {
+            @include particles(200, $color-particles-1);    
+            width: 2px;
+            height: 2px;
+        }
+
+        .particle-1:after {
+            @include particles(400, $color-particles-2);    
+            width: 1px;
+            height: 1px;
+        }
+
+        .particle-2:after {
+            @include particles(200, $color-particles-2);    
+            width: 1px;
+            height: 1px;
+        }
+
+        .particle-3:after {
+            @include particles(500, $color-particles-2);    
+            width: 3px;
+            height: 3px;
+        }
+
+        .particle-4:after {
+            @include particles(200, $color-particles-2);    
+            width: 3px;
+            height: 3px;
+        }
+        
+        .footer {
+            padding: 0 1em 0 1em; 
+            font-family: $font-family-mono;
+            font-size: $font-size-small;
+            color: $nav-font-color;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            align-self: bottom;
+        }
+
+        @media (prefers-reduced-motion) {
+            .planet { 
+                animation: none;
+            }
+
+            .particle {
+                animation: none; 
+            }
+        }
 	}
 }
 
