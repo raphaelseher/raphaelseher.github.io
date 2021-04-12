@@ -1,19 +1,21 @@
 ---
 layout: default
 title: "Impressum"
+permalink: /imprint
 ---
-
-# Impressum
 
 Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.
 
-Raphael Seher
-
-Jesserniggstraße 3,
-9020 Klagenfurt,
+Raphael Seher  
+Jesserniggstraße 3  
+9020 Klagenfurt  
 Österreich
 
-E-Mail: raphael.seher+impressum@gmail.com
+__Unternehmensgegenstand__: Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik   
+__UID-Nummer__: ATU76510508    
+__Gewerbebehörde__: Magistrat der Stadt Klagenfurt 
+
+__E-Mail__: [raphael.seher@gmail.com](mailto:raphael.seher+impressum@gmail.com)
 
 ## EU-Streitschlichtung
 Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.
@@ -62,5 +64,3 @@ Datum und Uhrzeit
 in Dateien (Webserver-Logfiles).
 
 In der Regel werden Webserver-Logfiles zwei Wochen gespeichert und danach automatisch gelöscht. Wir geben diese Daten nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.
-
-Quelle: Erstellt mit dem Datenschutz Generator von firmenwebseiten.at
