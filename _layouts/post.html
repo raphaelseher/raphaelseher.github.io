@@ -4,34 +4,35 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-{% include head.html %}
+  {% include head.html %}
 
-<body>
+  <body>
     {% include sidebar.html %}
     <div id="main">
-        <div id="content">
-            <article class="post">
-                {% if page.header-image %}
-                <img class="post-header" src="{{ page.header-image }}" alt="{{ page.header-image-alt }}" />
-                {% endif %}
-                <div class="title">
-                    <h2>{{ page.title }}</h2>
-                    <div class="meta">
-                        <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
-                        <p class="tags">
-                            {% for tag in page.tags %}
-                            {{ tag }}
-                            {% endfor %}
-                        </p>
-                    </div>
-                </div>
-                {{ content }}
-            </article>
-        </div>
-        {% include footer.html %}
+      <div id="content">
+        <article class="post">
+          {% if page.header-image %}
+          <img
+            class="post-header"
+            src="{{ page.header - image }}"
+            alt="{{ page.header - image - alt }}"
+          />
+          {% endif %}
+          <div class="title">
+            <h2>{{ page.title }}</h2>
+            <div class="meta">
+              <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
+              <p class="tags">
+                {{ page.tags | join: ", " }}
+              </p>
+            </div>
+          </div>
+          {{ content }}
+        </article>
+      </div>
+      {% include footer.html %}
     </div>
-</body>
-
+  </body>
 </html>
