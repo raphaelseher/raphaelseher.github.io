@@ -11,13 +11,14 @@
   <body>
     {% include sidebar.html %}
     <div id="main">
+      {% include title.html %}
       <div id="content">
         <article class="post">
-          {% if page.header-image %}
+          {% if page.headerImage %}
           <img
             class="post-header"
-            src="{{ page.header - image }}"
-            alt="{{ page.header - image - alt }}"
+            src="{{ page.headerImage }}"
+            alt="{{ page.headerImageAlt }}"
           />
           {% endif %}
           <div class="title">
