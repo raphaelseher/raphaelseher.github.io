@@ -239,10 +239,11 @@ body {
     header#title {
       .content {
         flex-direction: row;
-        align-items: flex-end;
-        padding: 0 2em 0 2em;
+        align-items: center;
+        padding: 2em 2em 0 2em;
 
         h1 {
+          font-size: 28px;
           margin: 0;
         }
 
