@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+
+  {% include head.html %}
+
+  <body>
+    {% include sidebar.html %}
+    <div id="main">
+      {% include title.html %}
+      <div id="content">
+        <article class="post">
+          {% if page.headerImage %}
+          <img
+            class="post-header"
+            src="{{ page.headerImage }}"
+            alt="{{ page.headerImageAlt }}"
+          />
+          {% endif %}
+          <div class="title">
+            <h2>{{ page.title }}</h2>
+            <div class="meta">
+              <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
+              <p class="tags">
+                {{ page.tags | join: ", " }}
+              </p>
+            </div>
+          </div>
+          {{ content }}
+        </article>
+      </div>
+      {% include footer.html %}
+    </div>
+  </body>
+</html>

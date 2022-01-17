@@ -1,0 +1,27 @@
+{% assign current = page.url | downcase | split: '/' %}
+
+<header id="title">
+    <div class="content">
+        <h1 class="title">
+            <a href="{{ site.url }}" {% if current[1]=='index' %}class='current' {% endif %}>
+                {{site.title}}
+                <span class="decoration-line"></span>
+            </a>
+        </h1>
+        <nav>
+            <a href="/" {% if current[1]=='index' %} class='current mobile-nav-element' {% endif %}
+                class='mobile-nav-element'>
+                Start
+                <span class="decoration-line"></span>
+            </a>
+            <a href="/contact" {% if current[1]=='contact' %}class='current' {% endif %}>
+                Contact
+                <span class="decoration-line"></span>
+            </a>
+            <a href="/imprint" {% if current[1]=='imprint' %}class='current' {% endif %}>
+                Imprint
+                <span class="decoration-line"></span>
+            </a>
+        </nav>
+    </div>
+</header>

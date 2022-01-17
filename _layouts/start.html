@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+{% include head.html %}
+
+<body>
+    {% include sidebar.html %}
+    <div id="main">
+        {% include title.html %}
+        <div id="content">
+            <ul class="post-list">
+                {% for post in site.posts %}
+                <li>
+                    <article class="post">
+                        <div class="title">
+                            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                            <p class="date">{{ post.date | date: "%-d %B %Y" }}</p>
+                        </div>
+                        <div class="excerpt">{{ post.excerpt }}</div>
+                        <a class="button button-small" href="{{ post.url }}">Read more</a>
+                    </article>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% include footer.html %}
+    </div>
+</body>
+
+</html>
