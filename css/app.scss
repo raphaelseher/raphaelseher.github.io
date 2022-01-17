@@ -3,10 +3,18 @@
 
 @import url(gruvbox.css);
 
-$primary-color: #0277bd;
-$primary-color-light: #58a5f0;
-$primary-color-dark: #004c8c;
-$secondary-color: #ffb300;
+$primary-color: #458588;
+
+$sidebar-background-color: #242424;
+$main-background-color: #efefef;
+$nav-font-color: #fff;
+$color-particles-1: rgba(255, 255, 255, 0.3);
+$color-particles-2: rgba(255, 255, 255, 0.5);
+
+$button-background-color: #242424;
+$button-color: #fff;
+
+$font-color: #353535;
 
 $sidebar-background-color: #242424;
 $main-background-color: #efefef;
@@ -45,433 +53,513 @@ $nav-particles-index: -2;
 $nav-planets-index: -1;
 
 @font-face {
-    font-family: 'Mono';
-    src: url('../assets/font/JetBrainsMono-Regular.eot');
-    src: url('../assets/font/JetBrainsMono-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../assets/font/JetBrainsMono-Regular.woff2') format('woff2'),
-        url('../assets/font/JetBrainsMono-Regular.ttf') format('truetype'),
-        url('../assets/font/JetBrainsMono-Regular.svg#JetBrainsMono-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Mono";
+  src: url("../assets/font/JetBrainsMono-Regular.eot");
+  src: url("../assets/font/JetBrainsMono-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/font/JetBrainsMono-Regular.woff2") format("woff2"),
+    url("../assets/font/JetBrainsMono-Regular.ttf") format("truetype"),
+    url("../assets/font/JetBrainsMono-Regular.svg#JetBrainsMono-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/font/RobotoSlab-Regular.eot');
-    src: url('../assets/font/RobotoSlab-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../assets/font/RobotoSlab-Regular.woff2') format('woff2'),
-        url('../assets/font/RobotoSlab-Regular.ttf') format('truetype'),
-        url('../assets/font/RobotoSlab-Regular.svg#RobotoSlab-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Roboto";
+  src: url("../assets/font/RobotoSlab-Regular.eot");
+  src: url("../assets/font/RobotoSlab-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/font/RobotoSlab-Regular.woff2") format("woff2"),
+    url("../assets/font/RobotoSlab-Regular.ttf") format("truetype"),
+    url("../assets/font/RobotoSlab-Regular.svg#RobotoSlab-Regular")
+      format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @function randomLeftPosition($width) {
-    @return random($width - $planet-size)+px;
+  @return random($width - $planet-size) + px;
 }
+
 html {
-    background-color: $main-background-color;
+  background-color: $main-background-color;
+  overflow-y: scroll;
 }
 
 body {
-	margin: 0;
+  margin: 0;
 
-	#main {
-        display: flex;
-        flex-direction: column;
-        font-family: $font-family;
-        background-color: $main-background-color;
-	}
-	
-	#content {
-		font-family: $font-family;
-		color: $font-color;
-		padding: 0.5em 2em 0.5em 2em;
-        max-width: $content-max-width; 
-           
-        img {
-            width: 100%; 
-            max-width: $content-max-width;
-            height: auto;
-        }
+  #main {
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family;
+    background-color: $main-background-color;
+  }
 
-        ul {
-            list-style-type: none; 
-            padding: 0;
-        }
+  #content {
+    font-family: $font-family;
+    color: $font-color;
+    padding: 0.5em 2em 0.5em 2em;
+    max-width: $content-max-width;
 
-        .post {
-            margin-bottom: 3em;
-
-            .title {
-                h3, h2 {
-                    margin-bottom: 0.1em; 
-                }
-                a { 
-                    color: $font-color;
-
-                    &:hover {
-                        text-decoration-color: $primary-color;
-                    }
-                }
-                p { 
-                    margin-top: 0;
-                }
-
-                .meta {
-                    display: flex;
-                    flex-direction: row;
-                    
-                    .tags {
-                        margin-left: 2em;
-                    }
-                }
-            }
-
-            .date, .tags {
-                font-size: 12px;
-            }
-        }
-
-        div.highlight {
-            padding: 0.5em 0.5em 0.5em 0.5em;
-            overflow-x: auto;
-
-            .lineno {
-                margin-right: 1em;    
-                -ms-user-select:none;
-                -moz-user-select:none;
-                -webkit-user-select:none;
-                -webkit-touch-callout: none;
-                -khtml-user-select: none;
-                user-select:none;
-            }
-            pre {
-                margin: 0;
-            }
-        }
-
-        blockquote {
-            margin: 0 1em 0 1em;
-            border-left: 3px solid $primary-color;
-            background-color: #fefefe;
-
-            p {
-                padding: 0.2em 0.5em 0.2em 0.5em;
-            }
-        }
-	}
-
-    a.button {
-        padding: 0.2em 1em 0.2em 1em;
-        background-color: $button-background-color;
-        color: $button-color;
-        text-decoration: none;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-   
-        &:hover {
-            border-bottom: 3px solid $primary-color;
-        }
+    img {
+      width: 100%;
+      max-width: $content-max-width;
+      height: auto;
     }
 
-    a.button-small {
-        font-size: $font-size-small;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
 
-    .footer { 
-		padding: 0.5em 2em 0.5em 2em;
-        font-size: $font-size-small;
+    .post {
+      margin-bottom: 3em;
+
+      .title {
+        h3,
+        h2 {
+          margin-bottom: 0.1em;
+        }
+        a {
+          color: $font-color;
+
+          &:hover {
+            text-decoration-color: $primary-color;
+          }
+        }
+        p {
+          margin-top: 0;
+        }
+
+        .meta {
+          display: flex;
+          flex-direction: row;
+
+          .tags {
+            margin-left: 2em;
+          }
+        }
+      }
+
+      .date,
+      .tags {
+        font-size: 12px;
+      }
     }
 
-    @media (max-width: $mamabear) { 
-        header {
-            width: 100%;
-            height: $sidebar-height-phone;
-            flex-direction: row; 
-            
-            nav {
-                flex-direction: row;
-            }
+    div.highlight {
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      overflow-x: auto;
 
-            #bio {
-                display: none; 
-            }
-
-            .footer { 
-                display: none;
-            }
-
-            .planet {
-                width: 72px; 
-                height: 100%;
-                margin: auto;
-            }
-        }
+      .lineno {
+        margin-right: 1em;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        user-select: none;
+      }
+      pre {
+        margin: 0;
+      }
     }
 
-    @media (min-width: $mamabear) {
-        #main { 
-            margin-left: $sidebar-width-tablet;
-        }
+    blockquote {
+      margin: 0 1em 0 1em;
+      border-left: 3px solid $primary-color;
+      background-color: #fefefe;
 
-        .footer {
-            display: none;
-        }
-
-        header {
-            width: $sidebar-width-tablet;
-            height: 100%;
-            flex-direction: column;
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            nav {
-                flex-direction: column;
-                margin: 1em 0 1em 0;
-            }
-            
-            .planet {
-                position: relative;
-                width: 96px; 
-                height: 96px;
-            
-                animation: planetMoving 1s linear 1;
-            }
-
-            .footer { 
-                display: block;
-            }
-
-            @for $i from 1 through 5 {
-                .planet-#{$i} {
-                    left: randomLeftPosition($sidebar-width-tablet);
-                }
-            }
-        }
+      p {
+        padding: 0.2em 0.5em 0.2em 0.5em;
+      }
     }
+  }
 
-    @media (min-width: $papabear) {
-        #main { 
-            margin-left: $sidebar-width;
-        }
+  a.button {
+    padding: 0.2em 1em 0.2em 1em;
+    background-color: $button-background-color;
+    color: $button-color;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 
-        header { 
-            width: $sidebar-width;
-
-            @for $i from 1 through 5 {
-                .planet-#{$i} {
-                    left: randomLeftPosition($sidebar-width);
-                }
-            }
-        }
+    &:hover {
+      border-bottom: 3px solid $primary-color;
     }
+  }
 
-	header {
-        display: flex;
-        overflow: hidden;
-        font-family: $font-family-mono;
-		color: $nav-font-color;
+  a.button-small {
+    font-size: $font-size-small;
+  }
+
+  .footer {
+    padding: 0.5em 2em 0.5em 2em;
+    font-size: $font-size-small;
+  }
+
+  @media (max-width: $mamabear) {
+    header#nav {
+      width: 100%;
+      height: $sidebar-height-phone;
+      flex-direction: row;
+
+      nav {
+        flex-direction: row;
+      }
+
+      #bio {
+        display: none;
+      }
+
+      .footer {
+        display: none;
+      }
+
+      .planet {
+        width: 72px;
+        height: 100%;
         margin: auto;
+      }
+    }
+
+    header#title {
+      .content {
+        flex-direction: column;
+        align-items: center;
+
+        h1 a > .decoration-line {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $mamabear) {
+    #main {
+      margin-left: $sidebar-width-tablet;
+    }
+
+    .footer {
+      display: none;
+    }
+
+    header#title {
+      .content {
+        flex-direction: row;
+        align-items: center;
+        padding: 2em 2em 0 2em;
+
+        h1 {
+          font-size: 28px;
+          margin: 0;
+        }
+
+        .mobile-nav-element {
+          display: none;
+        }
+      }
+    }
+
+    header#nav {
+      width: $sidebar-width-tablet;
+      height: 100%;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      nav {
+        flex-direction: column;
+        margin: 1em 0 1em 0;
+      }
+
+      .planet {
+        position: relative;
+        width: 96px;
+        height: 96px;
+
+        animation: planetMoving 1s linear 1;
+      }
+
+      .footer {
+        display: block;
+      }
+
+      @for $i from 1 through 5 {
+        .planet-#{$i} {
+          left: randomLeftPosition($sidebar-width-tablet);
+        }
+      }
+    }
+  }
+
+  @media (min-width: $papabear) {
+    #main {
+      margin-left: $sidebar-width;
+    }
+
+    header#nav {
+      width: $sidebar-width;
+
+      @for $i from 1 through 5 {
+        .planet-#{$i} {
+          left: randomLeftPosition($sidebar-width);
+        }
+      }
+    }
+  }
+
+  header#title {
+    .content {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .decoration-line {
+        float: left;
+        width: 100%;
+        height: 2px;
+        background-color: $primary-color;
+      }
+
+      a {
+        color: $font-color;
+        text-decoration: none;
+
+        &:hover,
+        &.current {
+          .decoration-line {
+            visibility: visible;
+          }
+        }
+
+        .decoration-line {
+          visibility: hidden;
+        }
+      }
+
+      nav {
+        font-size: 18px;
+
+        a {
+          display: inline-block;
+          margin-left: 1em;
+        }
+      }
+    }
+  }
+
+  header#nav {
+    display: flex;
+    overflow: hidden;
+    font-family: $font-family-mono;
+    color: $nav-font-color;
+    margin: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0px -4px 7px rgba(0, 0, 0, 0.5);
+
+    .content {
+      padding: 1em;
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .nav-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: $nav-background-index;
+      background-color: $sidebar-background-color;
+    }
+
+    .title {
+      margin: 0 0 0.2em 0;
+
+      a {
+        color: $nav-font-color;
+        text-decoration: none;
+      }
+    }
+
+    img {
+      object-fit: cover;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid $font-color;
+      box-shadow: 0px 0px 10px #999;
+      justify-content: center;
+    }
+
+    nav {
+      display: flex;
+
+      a {
+        color: $nav-font-color;
+        margin: 0 0.4em 0 0;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-        box-shadow: inset 0px -4px 7px rgba(0, 0, 0, 0.5);
+      }
 
-        .content { 
-            padding: 1em;
+      a:hover {
+        text-decoration-color: $primary-color;
+      }
+    }
 
-            p {
-                font-size: 14px;
-            }
-        }
+    #planets {
+      flex-grow: 1;
+    }
 
-        .nav-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: $nav-background-index;
-            background-color: $sidebar-background-color;
-        }
+    .planet {
+      z-index: $nav-planets-index;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
 
-        .title {
-            margin: 0 0 0.2em 0;
-            
-            a { 
-                color: $nav-font-color;
-                text-decoration: none;
-            }
-        }
-		
-        img {
-			object-fit: cover;
-			width: 100px;
-			height: 100px;
-			border-radius: 50%;
-			border: 2px solid $font-color;
-			box-shadow: 0px 0px 10px #999;
-			justify-content: center;
-		}
+      animation-delay: calc(var(--scroll) * -1s);
+      animation-play-state: paused;
+      animation-fill-mode: forwards;
+    }
 
-        nav {
-            display: flex;
-        
-            a {
-                color: $nav-font-color;
-                margin: 0 0.4em 0 0;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-            }
+    #raphi {
+      top: random(10) + px;
+      background-image: url(../img/raphi.png);
+    }
 
-            a:hover {
-                text-decoration-color: $primary-color;
-            }
-        }
-        
-        #planets { 
-            flex-grow: 1;
-        }
+    #earth {
+      top: random(100px) + $planet-offset;
+      background-image: url(../img/earth.png);
+    }
 
-        .planet {
-            z-index: $nav-planets-index; 
-            background-size: contain; 
-            background-repeat: no-repeat;
-            background-position: center;
-            
-            animation-delay: calc(var(--scroll) * -1s);
-            animation-play-state: paused;
-            animation-fill-mode: forwards;
-        }
+    #mars {
+      top: random(100px) + 2 * $planet-offset;
+    }
 
-        #raphi {
-            top: random(10)+px;
-            background-image: url(../img/raphi.png);
-        }
+    #venus {
+      top: random(100px) + 3 * $planet-offset;
+    }
 
-        #earth {
-            top: random(100px)+$planet-offset;
-            background-image: url(../img/earth.png);
-        }
+    #jupiter {
+      top: random(100px) + 4 * $planet-offset;
+    }
 
-        #mars {
-            top: random(100px)+2*$planet-offset;
-        }
+    @keyframes planetMoving {
+      to {
+        transform: translateY(-600%);
+      }
+    }
 
-        #venus {
-            top: random(100px)+3*$planet-offset;
-        }
+    @function particles($max, $color) {
+      $val: 0px 0px $color;
+      @for $i from 1 through $max {
+        $val: #{$val},
+          random($particle-spacing-x) +
+            px
+            random($particle-spacing-y) +
+            px
+            $color;
+      }
+      @return $val;
+    }
 
-        #jupiter {
-            top: random(100px)+4*$planet-offset;
-        }
+    @mixin particles($max, $color) {
+      box-shadow: particles($max, $color);
+    }
 
-        @keyframes planetMoving {
-           to {
-               transform: translateY(-600%);
-           }
-        }
+    .particle-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: $nav-particles-index;
+    }
 
-        @function particles($max, $color) {
-            $val: 0px 0px $color;
-            @for $i from 1 through $max {
-                $val: #{$val}, random($particle-spacing-x)+px random($particle-spacing-y)+px $color;
-            }
-            @return $val;
-        }
+    .particle {
+      animation: planetMoving 1s linear 1;
+      animation-delay: calc(var(--scroll) * -1s);
+      animation-play-state: paused;
+      animation-fill-mode: forwards;
+    }
 
-        @mixin particles($max, $color) {
-            box-shadow: particles($max, $color);
-        }
- 
-        .particle-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: $nav-particles-index;
-        }
+    .particle:after {
+      position: absolute;
+      content: "";
+      top: 0;
+    }
 
-        .particle {
-            animation: planetMoving 1s linear 1;
-            animation-delay: calc(var(--scroll) * -1s);
-            animation-play-state: paused;
-            animation-fill-mode: forwards;
-        }
+    .particle-1 {
+      @include particles(400, $color-particles-1);
+      width: 2px;
+      height: 2px;
+    }
 
-        .particle:after {
-            position: absolute;
-            content: "";
-            top: 0;
-        }
+    .particle-2 {
+      @include particles(100, $color-particles-1);
+      width: 2px;
+      height: 2px;
+    }
 
-        .particle-1 {
-            @include particles(400, $color-particles-1);    
-            width: 2px;
-            height: 2px;
-        }
+    .particle-3 {
+      @include particles(500, $color-particles-1);
+      width: 2px;
+      height: 2px;
+    }
 
-        .particle-2 {
-            @include particles(100, $color-particles-1);    
-            width: 2px;
-            height: 2px;
-        }
+    .particle-4 {
+      @include particles(200, $color-particles-1);
+      width: 2px;
+      height: 2px;
+    }
 
-        .particle-3 {
-            @include particles(500, $color-particles-1);    
-            width: 2px;
-            height: 2px;
-        }
+    .particle-1:after {
+      @include particles(400, $color-particles-2);
+      width: 1px;
+      height: 1px;
+    }
 
-        .particle-4 {
-            @include particles(200, $color-particles-1);    
-            width: 2px;
-            height: 2px;
-        }
+    .particle-2:after {
+      @include particles(200, $color-particles-2);
+      width: 1px;
+      height: 1px;
+    }
 
-        .particle-1:after {
-            @include particles(400, $color-particles-2);    
-            width: 1px;
-            height: 1px;
-        }
+    .particle-3:after {
+      @include particles(500, $color-particles-2);
+      width: 3px;
+      height: 3px;
+    }
 
-        .particle-2:after {
-            @include particles(200, $color-particles-2);    
-            width: 1px;
-            height: 1px;
-        }
+    .particle-4:after {
+      @include particles(200, $color-particles-2);
+      width: 3px;
+      height: 3px;
+    }
 
-        .particle-3:after {
-            @include particles(500, $color-particles-2);    
-            width: 3px;
-            height: 3px;
-        }
+    .footer {
+      padding: 0 1em 0 1em;
+      font-family: $font-family-mono;
+      font-size: $font-size-small;
+      color: $nav-font-color;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      align-self: bottom;
+    }
 
-        .particle-4:after {
-            @include particles(200, $color-particles-2);    
-            width: 3px;
-            height: 3px;
-        }
-        
-        .footer {
-            padding: 0 1em 0 1em; 
-            font-family: $font-family-mono;
-            font-size: $font-size-small;
-            color: $nav-font-color;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            align-self: bottom;
-        }
+    @media (prefers-reduced-motion) {
+      .planet {
+        animation: none;
+      }
 
-        @media (prefers-reduced-motion) {
-            .planet { 
-                animation: none;
-            }
-
-            .particle {
-                animation: none; 
-            }
-        }
-	}
+      .particle {
+        animation: none;
+      }
+    }
+  }
 }
-

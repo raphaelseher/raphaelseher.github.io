@@ -8,15 +8,16 @@
 
 {% include head.html %}
 
-    <body>
-        {% include header.html %}
-        <div id="main">
-            <div id="content">
-                <h2>{{ page.title }}</h2> 
-                {{ content }}
-            </div>
-            {% include footer.html %}
+<body>
+    {% include sidebar.html %}
+    <div id="main">
+        {% include title.html %}
+        <div id="content">
+            <h2>{{ page.title }}</h2>
+            {{ content }}
         </div>
-    </body>
+        {% include footer.html %}
+    </div>
+</body>
 
 </html>

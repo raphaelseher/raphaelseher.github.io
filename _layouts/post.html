@@ -1,5 +1,5 @@
-    <!DOCTYPE html>
-    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -8,31 +8,30 @@
 
 {% include head.html %}
 
-    <body>
-        {% include header.html %}
-        <div id="main">
-            <div id="content">
-                <article class="post">
-                    {% if page.header-image %} 
-                        <img class="post-header" src="{{ page.header-image }}" 
-                            alt="{{ page.header-image-alt }}" /> 
-                    {% endif %}
-                    <div class="title">
-                        <h2>{{ page.title }}</h2>
-                        <div class="meta">
-                            <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
-                            <p class="tags">
+<body>
+    {% include sidebar.html %}
+    <div id="main">
+        <div id="content">
+            <article class="post">
+                {% if page.header-image %}
+                <img class="post-header" src="{{ page.header-image }}" alt="{{ page.header-image-alt }}" />
+                {% endif %}
+                <div class="title">
+                    <h2>{{ page.title }}</h2>
+                    <div class="meta">
+                        <p class="date">{{ page.date | date: "%-d %B %Y" }}</p>
+                        <p class="tags">
                             {% for tag in page.tags %}
                             {{ tag }}
                             {% endfor %}
-                            </p>
-                        </div>
+                        </p>
                     </div>
-                    {{ content }}
-                </article>
-            </div>
-            {% include footer.html %}
+                </div>
+                {{ content }}
+            </article>
         </div>
-    </body>
+        {% include footer.html %}
+    </div>
+</body>
 
 </html>
