@@ -71,3 +71,5 @@ Datum und Uhrzeit
 in Dateien (Webserver-Logfiles).
 
 In der Regel werden Webserver-Logfiles zwei Wochen gespeichert und danach automatisch gelöscht. Wir geben diese Daten nicht weiter, können jedoch nicht ausschließen, dass diese Daten beim Vorliegen von rechtswidrigem Verhalten eingesehen werden.
+
+Quelle: Erstellt mit dem [Datenschutz-Generator](https://www.adsimple.at/datenschutz-generator/https://www.adsimple.at/datenschutz-generator/) von AdSimple
